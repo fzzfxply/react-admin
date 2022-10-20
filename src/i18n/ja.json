@@ -1,0 +1,16 @@
+{
+    "header": {
+        "register": "登録",
+        "signin": "上陸する ",
+        "home": "トップページ",
+        "switchlanguage": "言語の切り替え"
+    },
+    "leftMenu": {
+        "hot_recommended": "爆金推奨",
+        "new_arrival": "新製品が出回る",
+        "joint_venture": "パートナー企業",
+        "commodity": "商品",
+        "searchLayout": "ページテスト",
+        "MuiPage": "Muiテスト"
+    }
+}

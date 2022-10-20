@@ -1,0 +1,12 @@
+.DownloadPanel {
+  width: 100px;
+  height: 100px;
+  background: rgb(139, 228, 161);
+  display: flex;
+  justify-content: space-between;
+  .childClass{
+    width:50px;
+    height:50px;
+    background: rebeccapurple;
+  }
+}

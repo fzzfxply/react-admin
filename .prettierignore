@@ -1,0 +1,7 @@
+/node_modules/
+/dist
+.prettierrc
+schema.graphql
+*.html
+*.scss
+*.json
