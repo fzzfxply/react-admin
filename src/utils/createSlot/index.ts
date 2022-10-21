@@ -1,6 +1,4 @@
-import { searchLayoutType } from "../../type"
-
-function createSlot(slotName: string, props: searchLayoutType[]) {
+function createSlot(slotName: string, props: any) {
     let children = props.children
     if (typeof children === "object" && !Array.isArray(children)) children = [children]
     if (children)
