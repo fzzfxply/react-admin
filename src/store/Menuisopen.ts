@@ -27,7 +27,7 @@ export class MenuisOpenStore {
 
     setLngChange = (value: string) => {
         this.isLngChange = value === "ch" ? "ja" : "ch"
-        console.log(this.isLngChange )
+        console.log(this.isLngChange)
     }
     // 注意这个字段的使用：在页面useEffect的时候，如果你没有添加依赖数组（初始化执行），那么你可能拿不到computed计算的数据（原因是这时候还没有persist结束）,所以
     // 这个属性还是比较重要的，因为它可以在页面上做判断，当页面load完成，get数据计算完成之后，isHydrated会置为true

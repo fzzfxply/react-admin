@@ -7,7 +7,6 @@ import translation_ja from "./ja.json"
 const { MenuisOpenStore } = store
 
 const resources = {
-
     ch: {
         translation: translation_en,
     },

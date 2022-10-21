@@ -85,7 +85,7 @@ function MiniDrawer() {
         if (store.isHydrated) {
             console.log("store里缓存的值" + store.isopen)
         }
-    }, [store.isHydrated,store.isopen])
+    }, [store.isHydrated, store.isopen])
     return (
         <Box sx={{ display: "flex" }}>
             <CssBaseline />

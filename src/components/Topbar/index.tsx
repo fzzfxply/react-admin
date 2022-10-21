@@ -31,7 +31,6 @@ const AppBar = styled(MuiAppBar, {
 }))
 // 页面
 function Index() {
-
     const { MenuisOpenStore: store } = useContext(StoreContext)
     const { t, i18n } = useTranslation()
     const handleDrawerOpen = () => {
