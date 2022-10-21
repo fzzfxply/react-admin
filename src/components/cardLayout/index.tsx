@@ -1,8 +1,8 @@
 import { Box, Card, CardActions, CardContent, CardHeader } from "@mui/material"
 import React, { forwardRef, LegacyRef } from "react"
 
-import createSlot from "../../utils/createSlot"
 import { cardLayoutType } from "../../type"
+import createSlot from "../../utils/createSlot"
 
 function Index<T extends LegacyRef<T>>(props: cardLayoutType, ref: React.Ref<unknown> | undefined) {
     console.log(props)
