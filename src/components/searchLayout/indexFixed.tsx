@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box"
-import React, { forwardRef, LegacyRef} from "react"
+import React, { forwardRef, LegacyRef } from "react"
 
 import createSlot from "../../utils/createSlot"
 function Index<T extends LegacyRef<T>>(props: any, ref: React.Ref<unknown> | undefined) {

@@ -11,7 +11,9 @@ function Index<T extends LegacyRef<T>>(props: any, ref: React.Ref<unknown> | und
                 {props.cardHeader ? <CardHeader title={props.cardHeader} /> : null}
                 {createSlot("cardContent", props) ? (
                     <CardContent>
-                        <Box {...props} minHeight={props.cardContentDefaultHeight? 400 : props.minHeight}>{createSlot("cardContent", props)}</Box>
+                        <Box {...props} minHeight={props.cardContentDefaultHeight ? 400 : props.minHeight}>
+                            {createSlot("cardContent", props)}
+                        </Box>
                     </CardContent>
                 ) : null}
                 {createSlot("CardActions", props) ? <CardActions>{createSlot("CardActions", props)}</CardActions> : null}

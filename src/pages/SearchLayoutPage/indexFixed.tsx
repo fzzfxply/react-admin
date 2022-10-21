@@ -42,7 +42,9 @@ export default function SearchLayoutPage() {
                 </Box>
                 <div slot="renderCenter">
                     <CardLayout cardHeader={cardTopHeader}>
-                        <Box slot="cardContent" minHeight={tableHeight}>我是表格</Box>
+                        <Box slot="cardContent" minHeight={tableHeight}>
+                            我是表格
+                        </Box>
                     </CardLayout>
                 </div>
                 <div slot="renderFooter">

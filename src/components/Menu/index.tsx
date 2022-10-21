@@ -78,14 +78,14 @@ function MiniDrawer() {
     const setPathEvent = (path: string) => {
         return path?.includes("*") ? getTempPath(path) : path
     }
-    const getTempPath = (path:string)=>{
+    const getTempPath = (path: string) => {
         return path.slice(0, path.length - 2)
     }
     useEffect(() => {
         if (store.isHydrated) {
             console.log("store里缓存的值" + store.isopen)
         }
-    }, [store.isHydrated])
+    }, [store.isHydrated,store.isopen])
     return (
         <Box sx={{ display: "flex" }}>
             <CssBaseline />
@@ -118,7 +118,10 @@ function MiniDrawer() {
                                     </ListItemIcon>
                                     <ListItemText
                                         primary={t(item.title)}
-                                        sx={{ opacity: store.isopen ? 1 : 0, color: location.pathname.indexOf(setPathEvent(`${item.path}`)) != -1 ? "red" : "#075443" }}
+                                        sx={{
+                                            opacity: store.isopen ? 1 : 0,
+                                            color: location.pathname.indexOf(setPathEvent(`${item.path}`)) != -1 ? "red" : "#075443",
+                                        }}
                                     />
                                 </ListItemButton>
                             </ListItem>
@@ -127,7 +130,7 @@ function MiniDrawer() {
                 </List>
                 <Divider />
             </Drawer>
-            <Box component="main" sx={{ flexGrow: 1,pb:1,pl:3,pr:3 }}>
+            <Box component="main" sx={{ flexGrow: 1, pb: 1, pl: 3, pr: 3 }}>
                 <DrawerHeader />
                 <Outlet />
             </Box>

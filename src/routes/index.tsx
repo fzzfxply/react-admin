@@ -1,9 +1,10 @@
-import React, { ReactNode } from "react"
+import i18n from "i18next"
+import React, { useContext } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 
 import Home from "../components"
-import Login from "../pages/Login"
 import { FIXEDROUTES, RouterType, ROUTES } from "../rounterCofig"
+import StoreContext from "../store"
 import lazyLoad from "../utils/lazyLoad"
 
 const RequireAuth = ({ children }: any) => {
@@ -20,6 +21,9 @@ const runderRouter = (ROUTES: RouterType[]) => {
 }
 
 export default function RouterTest() {
+    const { MenuisOpenStore: store } = useContext(StoreContext)
+
+    i18n.changeLanguage(store.isLngChange)
     return (
         <Routes>
             {runderRouter(FIXEDROUTES)}

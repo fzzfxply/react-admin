@@ -7,7 +7,7 @@ export interface X {
     }
 }
 
-function t<  T extends keyof X>(a: T, b:Record<string,string|number>) {
+function t<T extends keyof X>(a: T, b: Record<string, string | number>) {
     if (a === "t") {
         console.log(b.x)
     }

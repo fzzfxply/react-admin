@@ -31,6 +31,7 @@ const AppBar = styled(MuiAppBar, {
 }))
 // 页面
 function Index() {
+
     const { MenuisOpenStore: store } = useContext(StoreContext)
     const { t, i18n } = useTranslation()
     const handleDrawerOpen = () => {
@@ -38,6 +39,7 @@ function Index() {
     }
     const lngChangeEvent = () => {
         store.setLngChange(i18n.language)
+
         i18n.changeLanguage(store.isLngChange)
     }
     return (

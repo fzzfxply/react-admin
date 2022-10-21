@@ -1,4 +1,4 @@
-function createSlot(slotName: any,props:any) {
+function createSlot(slotName: string, props: { children: Array<any> }) {
     let children = props.children
     if (typeof children === "object" && !Array.isArray(children)) children = [children]
     if (children)
