@@ -20,6 +20,7 @@
     "dayjs": "^1.11.5",
     "eslint-config-prettier": "^8.5.0",
     "i18next": "^21.8.14",
+    "lodash": "^4.17.21",
     "mobx": "^6.6.1",
     "mobx-persist-store": "^1.1.2",
     "mobx-react-lite": "^3.4.0",

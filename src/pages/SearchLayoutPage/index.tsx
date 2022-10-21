@@ -8,6 +8,17 @@ import SearchLayout from "../../components/searchLayout"
 export default function SearchLayoutPage() {
     const pageTitle = "封装页面布局页面头部"
     const cardTopHeader = "我是卡片头部"
+    const [page, setPage] = React.useState(2)
+    const [rowsPerPage, setRowsPerPage] = React.useState(10)
+
+    const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+        setPage(newPage)
+    }
+
+    const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setRowsPerPage(parseInt(event.target.value, 10))
+        setPage(0)
+    }
     return (
         <>
             <SearchLayout pageTitle={pageTitle}>
@@ -33,7 +44,14 @@ export default function SearchLayoutPage() {
                 </div>
                 <div slot="renderFooter">
                     <div>
-                        <PaginationLayout count={10} color="primary" variant="outlined"></PaginationLayout>
+                        <PaginationLayout
+                            component="div"
+                            count={100}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            rowsPerPage={rowsPerPage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        ></PaginationLayout>
                     </div>
                 </div>
             </SearchLayout>

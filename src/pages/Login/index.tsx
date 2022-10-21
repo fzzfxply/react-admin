@@ -9,13 +9,13 @@ export default function Login() {
         navigate("/Register")
     }
     const toHome = () => {
-        navigate("/Register")
+        navigate("/HotrecommendedChild",{replace: true})
     }
     return (
         <>
             <div>登录页</div>
-            <PinkButton onClick={toReigster}>跳转注册页面</PinkButton>
-            <PinkButton onClick={toHome}>跳转至首页</PinkButton>
+            <div><PinkButton onClick={toReigster}>跳转注册页面</PinkButton></div>
+            <div> <PinkButton onClick={toHome}>跳转至首页</PinkButton></div>
         </>
     )
 }
