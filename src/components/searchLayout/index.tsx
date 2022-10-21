@@ -1,8 +1,10 @@
 import Box from "@mui/material/Box"
 import React, { forwardRef, LegacyRef } from "react"
 
+import { searchLayoutType } from "../../type"
 import createSlot from "../../utils/createSlot"
-function Index<T extends LegacyRef<T>>(props: any, ref: React.Ref<unknown> | undefined) {
+
+function Index<T extends LegacyRef<T>>(props: searchLayoutType, ref: React.Ref<unknown> | undefined) {
     console.log("props===========", props)
     return (
         <div>
