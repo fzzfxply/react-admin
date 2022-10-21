@@ -1,5 +1,5 @@
 import i18n from "i18next"
-import React, { useContext } from "react"
+import React, { useContext,useEffect } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 
 import Home from "../components"
@@ -20,10 +20,13 @@ const runderRouter = (ROUTES: RouterType[]) => {
     })
 }
 
-export default function RouterTest() {
+function RouterTest() {
     const { MenuisOpenStore: store } = useContext(StoreContext)
 
-    i18n.changeLanguage(store.isLngChange)
+    useEffect(()=>{
+
+        i18n.changeLanguage(store.isLngChange)
+    },[])
     return (
         <Routes>
             {runderRouter(FIXEDROUTES)}
@@ -41,3 +44,4 @@ export default function RouterTest() {
         </Routes>
     )
 }
+export default  RouterTest
