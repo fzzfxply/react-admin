@@ -1,8 +1,10 @@
 {
     "header" : {
         "register":"注册",
-        "signin":"登陆",
+        "signin":"登录",
+        "signout": "登出",
         "home": "首页",
+        "center": "个人设置",
         "switchlanguage":"切换语言"
     },
     "leftMenu": {

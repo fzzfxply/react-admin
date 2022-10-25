@@ -2,7 +2,9 @@
     "header": {
         "register": "登録",
         "signin": "上陸する ",
+        "signout": "サインアウト",
         "home": "トップページ",
+        "center": "個人設定",
         "switchlanguage": "言語の切り替え"
     },
     "leftMenu": {
