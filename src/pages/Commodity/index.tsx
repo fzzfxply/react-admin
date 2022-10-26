@@ -1,4 +1,5 @@
 import React, { memo, useCallback, useState } from "react"
+import FormA from "./FormA"
 
 function PageA(props: any) {
     const { onClick, name } = props
@@ -8,10 +9,11 @@ function PageA(props: any) {
 
 function PageB({ onClick, name }: any) {
     console.log(222)
-    return <div onClick={onClick}>{name}</div>
+    return <div style={{userSelect:"none"}} onClick={onClick}>{name}</div>
 }
 const PageC = memo(PageA)
 const PageD = memo(PageB)
+const arrList = ["a","b","c","d"]
 function ADD() {
     const [a, setA] = useState(0)
     const [b, setB] = useState(0)
@@ -27,6 +29,7 @@ function ADD() {
         <>
             <PageC onClick={handleClick1} name={a} />
             <PageD onClick={handleClick2} name={b} />
+            <FormA list={arrList} />
         </>
     )
 }
