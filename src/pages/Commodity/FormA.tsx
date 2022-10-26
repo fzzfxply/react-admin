@@ -27,7 +27,9 @@ export default function FormA(props: { list: string[] }) {
             <Box sx={{ width: 1 }}>
                 <CardLayout cardHeader="标题hhhh11111">
                     <Box gridColumn="span 8" slot="cardContent">
-                        <Item>xs=8{props.list[0]}</Item>
+                        <Item>
+                            xs=8{props.list[0]}-----{btn1}
+                        </Item>
                     </Box>
                 </CardLayout>
                 <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2} p={3}>
