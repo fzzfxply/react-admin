@@ -31,7 +31,7 @@ function ADD() {
         setB(b + 1)
     }, [b])
     const returnRendom = useMemo(() => {
-        return <div>{Math.random()}</div>
+        return <div>{Math.floor(Math.random()*10000)}</div>
     }, [])
     return (
         <>
