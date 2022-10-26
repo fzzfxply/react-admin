@@ -1,13 +1,13 @@
-import avatarImg from "../../assets/avatar.jpg"
 import MenuIcon from "@mui/icons-material/Menu"
 import { Avatar, Box, CssBaseline, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material"
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar"
-import { useNavigate } from "react-router-dom"
 import { styled } from "@mui/material/styles"
 import { observer } from "mobx-react-lite"
 import React, { useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
+import { useNavigate } from "react-router-dom"
 
+import avatarImg from "../../assets/avatar.jpg"
 import StoreContext from "../../store/index"
 
 interface AppBarProps extends MuiAppBarProps {
@@ -42,16 +42,16 @@ function Index() {
         setAnchorElUser(null)
     }
     const navigate = useNavigate()
-    const handleClickUserMenu = (setting:string, index: number, event: React.MouseEvent<HTMLElement>) => {
-        console.log(setting,"===",index,"===",event)
-        if(index === 0){
+    const handleClickUserMenu = (setting: string, index: number, event: React.MouseEvent<HTMLElement>) => {
+        console.log(setting, "===", index, "===", event)
+        if (index === 0) {
             navigate("/commodity")
         }
         setAnchorElUser(null)
     }
     const { MenuisOpenStore: store } = useContext(StoreContext)
     const { t, i18n } = useTranslation()
-    settings = [t("header.center"),t("header.signout")]
+    settings = [t("header.center"), t("header.signout")]
     const handleDrawerOpen = () => {
         store.setopen(true)
     }
@@ -77,7 +77,13 @@ function Index() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography style={{display:"flex", justifyContent:"space-between",alignItems:"center", width:"100%"}} className="top_typo" variant="h6" noWrap component="div">
+                    <Typography
+                        style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}
+                        className="top_typo"
+                        variant="h6"
+                        noWrap
+                        component="div"
+                    >
                         <Box onClick={lngChangeEvent}>
                             {/* 语言切换 */}
                             {t("header.switchlanguage")}
@@ -103,7 +109,7 @@ function Index() {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting, index) => (
-                                    <MenuItem key={setting} onClick={(event)=>handleClickUserMenu(setting,index,event)}>
+                                    <MenuItem key={setting} onClick={(event) => handleClickUserMenu(setting, index, event)}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
                                 ))}
