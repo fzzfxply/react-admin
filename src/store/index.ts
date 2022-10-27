@@ -1,9 +1,10 @@
 import { createContext } from "react"
 
-import { MenuisOpenStore } from "./Menuisopen"
+import { CommendStore,MenuisOpenStore } from "./Menuisopen"
 
 export const store = {
     MenuisOpenStore: new MenuisOpenStore(),
+    CommendStore: new CommendStore(),
 }
 const StoreContext = createContext(store)
 

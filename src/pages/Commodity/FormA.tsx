@@ -1,9 +1,11 @@
 import Favorite from "@mui/icons-material/Favorite"
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder"
-import { Box, Button, ButtonGroup, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel,Grid, InputLabel, MenuItem, OutlinedInput, Paper, Radio, RadioGroup,Select, SelectChangeEvent, styled, TextField } from "@mui/material"
-import React, { useEffect, useState } from "react"
+import MailIcon from "@mui/icons-material/Mail"
+import { Badge, Box, Button, ButtonGroup, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel,Grid, InputLabel,Menu,MenuItem, OutlinedInput, Paper, Radio, RadioGroup,Select, SelectChangeEvent, styled, TextField, Typography } from "@mui/material"
+import React, { useContext, useEffect, useState } from "react"
 
 import CardLayout from "../../components/cardLayout"
+import StoreContext from "../../store/index"
 interface newObj {
     age?:number | null
     salary?:number | string | null
@@ -30,21 +32,26 @@ const salaryList = [
     { value:4, label:"14000~16000"},
 ]
 const label = { inputProps: { "aria-label": "Checkbox demo" } }
+const preData = {
+    age:20,
+    salary:2
+}
+const settings = ["a","b"]
 export default function FormA(props: { list: string[] }) {
     const [btn1, setBtn1] = useState("")
     const [aa, setAa] = useState("")
     const [open, setOpen] = useState(false)
     const [age, setAge] = useState<number | string>("")
     const [salary, setSalary] = useState<number | string>("")
-    const [newAge, setnewAge] = useState<number | string>(20)
-    const [newSalary, setnewSalary] = useState<number | string>(3)
+    const [newAge, setnewAge] = useState<number | string>(preData.age)
+    const [favorCheck, setFavorCheck] = useState<boolean>(true)
+    const [newSalary, setnewSalary] = useState<number | string>(preData.salary)
     const [obj, setObj] = useState<newObj>({
         age:20,
         salary:0
     })
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
-        console.log(event.target.name)
         const name = event.target.name
         const value = event.target.value
         if(name === "age"){
@@ -53,6 +60,9 @@ export default function FormA(props: { list: string[] }) {
             setSalary(value)
         }
 
+    }
+    const handleFavorChange = (event:any) => {
+        setFavorCheck(!favorCheck)
     }
     const handleClickOpen = () => {
         setOpen(true)
@@ -70,15 +80,41 @@ export default function FormA(props: { list: string[] }) {
     // React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
     const handleInputBtn1 = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setBtn1(event.target.value)
-        console.log(btn1)
     }
     const handleSave = () => {
         console.log("点击了" + btn1)
-        console.log(aa)
     }
     useEffect(() => {
-        console.log(age)
+        // console.log(age)
     },[age,salary])
+
+    // 添加评论区域
+    const [currentCommend, setCurrentCommend] = React.useState<string>("Hello World")
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+    const { CommendStore: store } = useContext(StoreContext)
+    const [selectedCommend, setSelectedCommend] = React.useState<string>()
+    const handleSend = () => {
+        console.log("发送"+currentCommend)
+        setCurrentCommend("")
+        store.setNum(currentCommend)
+        setSelectedCommend(store.commendList[store.commendList.length-1])
+    }
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(event.currentTarget)
+    }
+    const handleCloseUserMenu = (e: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(null)
+    }
+    const handleClickUserMenu = (setting: string, index: number, event: React.MouseEvent<HTMLElement>) => {
+        // console.log(setting, "===", index, "===", event)
+        setSelectedCommend(setting)
+        setAnchorElUser(null)
+    }
+    const inputCurrentCommend = (event:React.ChangeEvent<HTMLInputElement>) => {
+        console.log(event.target.value,"event.target.value")
+
+        setCurrentCommend(event.target.value)
+    }
     return (
         <>
             <Box sx={{ width: 1 }}>
@@ -130,6 +166,9 @@ export default function FormA(props: { list: string[] }) {
                         {...label}
                         icon={<FavoriteBorder />}
                         checkedIcon={<Favorite />}
+                        checked={favorCheck}
+                        // value={favorCheck}
+                        onChange={handleFavorChange}
                     />
                 </Grid>
                 <Grid container>
@@ -142,6 +181,7 @@ export default function FormA(props: { list: string[] }) {
                         <Grid item xs={12} textAlign="center">
                             <FormControlLabel
                                 value="top"
+                                disabled={!favorCheck}
                                 control={<Radio />}
                                 label="Top"
                                 labelPlacement="top"
@@ -150,17 +190,23 @@ export default function FormA(props: { list: string[] }) {
                         <Grid item xs={6} textAlign="right" pr={4}>
                             <FormControlLabel
                                 value="start"
+                                disabled={!favorCheck}
                                 control={<Radio />}
                                 label="Start"
                                 labelPlacement="start"
                             />
                         </Grid>
                         <Grid item xs={6} textAlign="left" pl={4}>
-                            <FormControlLabel value="end" control={<Radio />} label="End" />
+                            <FormControlLabel
+                                value="end"
+                                disabled={!favorCheck}
+                                control={<Radio />}
+                                label="End" />
                         </Grid>
                         <Grid item xs={12} textAlign="center">
                             <FormControlLabel
                                 value="bottom"
+                                disabled={!favorCheck}
                                 control={<Radio />}
                                 label="Bottom"
                                 labelPlacement="bottom"
@@ -221,9 +267,59 @@ export default function FormA(props: { list: string[] }) {
                         </Dialog>
                     </Grid>
                 </Grid>
+                <Grid container p={3}>
+                    <Grid item xs={4} display="flex" alignItems="center">
+                        <Grid container p={3}>
+                            <Grid item xs={8}>
+                                <TextField
+                                    required
+                                    value={currentCommend}
+                                    onChange={inputCurrentCommend}
+                                    id="outlined-required"
+                                    label="Required"
+                                />
+                            </Grid>
+                            <Grid item xs={4} display="flex" alignItems="center">
+                                <Button variant="contained" disabled={currentCommend.length === 0} color="success" onClick={handleSend}>发送</Button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={8} display="flex" alignItems="center">
+                        <Grid container>
+                            <Grid item xs={2} display="flex" alignItems="center">
+                                <Badge badgeContent={store.num} color="secondary"  onClick={handleOpenUserMenu}>
+                                    <MailIcon color="action" />
+                                </Badge>
+                            </Grid>
+                            <Grid item xs={10}>
+                                <Typography>当前评论：{selectedCommend}</Typography>
+                            </Grid>
+                        </Grid>
+                        <Menu
+                            sx={{ mt: "45px" }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: "bottom",
+                                horizontal: "left",
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {store.commendList.map((com, index) => (
+                                <MenuItem key={index} onClick={(event) => handleClickUserMenu(com, index, event)}>
+                                    <Typography textAlign="center">{com}</Typography>
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                    </Grid>
+                </Grid>
             </Box>
         </>
     )
 }
-
-// export default FormA
