@@ -5,6 +5,7 @@ import { styled } from "@mui/material/styles"
 import { observer } from "mobx-react-lite"
 import React, { useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
+import {useNavigate} from "react-router-dom"
 
 import avatarImg from "../../assets/avatar.jpg"
 import StoreContext from "../../store/index"
@@ -34,17 +35,22 @@ const AppBar = styled(MuiAppBar, {
 // 页面
 function Index() {
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+    const navigate = useNavigate()
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget)
     }
-    const handleCloseUserMenu = (e: React.MouseEvent<HTMLElement>) => {
-        console.log(e, "eee")
+    const handleCloseUserMenu = () => {
         setAnchorElUser(null)
     }
-    const handleClickListItem = (event: React.MouseEvent<HTMLElement>, index: number) => {
+    const handleClickListItem = (setting:string,event: React.MouseEvent<HTMLElement>, index: number) => {
         console.log("获取当前点中的目标", event.currentTarget)
         console.log(index)
-        handleCloseUserMenu(event)
+        handleCloseUserMenu()
+        if(setting==t("header.signout")){
+            store.setauthed(false)
+            navigate("/Login")
+        }
+
     }
     const { MenuisOpenStore: store } = useContext(StoreContext)
     const { t, i18n } = useTranslation()
@@ -106,7 +112,7 @@ function Index() {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting, index) => (
-                                    <MenuItem key={setting} onClick={(event) => handleClickListItem(event, index)}>
+                                    <MenuItem key={setting} onClick={(event) => handleClickListItem(setting,event, index)}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
                                 ))}

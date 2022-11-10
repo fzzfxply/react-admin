@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box"
-import React from "react"
+import React, {useCallback} from "react"
 
 import CardLayout from "../../components/cardLayout"
 import PaginationLayout from "../../components/paginationLayout"
@@ -11,9 +11,14 @@ export default function SearchLayoutPage() {
     const [page, setPage] = React.useState(2)
     const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
-    const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    // const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    //     setPage(newPage)
+    // }
+
+    const handleChangePage = useCallback((event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
         setPage(newPage)
-    }
+        console.log(pageTitle,page,222)
+    }, [pageTitle])
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setRowsPerPage(parseInt(event.target.value, 10))

@@ -1,5 +1,5 @@
 import { Box, Card, CardActions, CardContent, CardHeader } from "@mui/material"
-import React, { forwardRef, LegacyRef } from "react"
+import React, { forwardRef, LegacyRef, memo } from "react"
 
 import { cardLayoutType } from "../../type"
 import createSlot from "../../utils/createSlot"
@@ -22,4 +22,4 @@ function Index<T extends LegacyRef<T>>(props: cardLayoutType, ref: React.Ref<unk
         </div>
     )
 }
-export default forwardRef(Index)
+export default memo(forwardRef(Index))

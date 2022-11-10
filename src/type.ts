@@ -14,9 +14,12 @@ export interface propsType {
 
 export interface searchLayoutType extends propsType {
     pageTitle?: string
+    props?: {
+        slot: any
+    }
 }
 export interface cardLayoutType extends propsType {
     cardHeader?: string
-    cardContentDefaultHeight?:boolean
-    minHeight?:number
+    cardContentDefaultHeight?: boolean
+    minHeight?: number
 }
