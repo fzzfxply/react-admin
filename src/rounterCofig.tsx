@@ -9,6 +9,7 @@ import Login from "./pages/Login"
 import MuiPage from "./pages/MuiPage"
 import Newarrival from "./pages/Newarrival"
 import NotFound from "./pages/NotFound"
+import PDFTest from "./pages/PDFTest"
 import Register from "./pages/Register"
 import SearchLayoutPage from "./pages/SearchLayoutPage"
 export interface RouterType extends RouteObject {
@@ -52,6 +53,11 @@ export const ROUTES: RouterType[] = [
         path: "HotrecommendedChild",
         isNot: true,
         element: <HotrecommendedChild />,
+    },
+    {
+        title: "leftMenu.pdfTest",
+        path: "PDFTest",
+        element: <PDFTest />,
     },
 ]
 export const FIXEDROUTES: RouterType[] = [
