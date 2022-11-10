@@ -10,7 +10,7 @@ export class MenuisOpenStore {
         makePersistable(this, {
             // 在构造函数内使用 makePersistable
             name: "menuStore", // 保存的name，用于在storage中的名称标识，只要不和storage中其他名称重复就可以
-            properties: ["isopen", "isLngChange","authed"], // 要保存的字段，这些字段会被保存在name对应的storage中，注意：不写在这里面的字段将不会被保存，刷新页面也将丢失：get字段例外。get数据会在数据返回后再自动计算
+            properties: ["isopen", "isLngChange", "authed"], // 要保存的字段，这些字段会被保存在name对应的storage中，注意：不写在这里面的字段将不会被保存，刷新页面也将丢失：get字段例外。get数据会在数据返回后再自动计算
             storage: window.sessionStorage, // 保存的位置：看自己的业务情况选择，可以是localStorage，sessionStorage
             // 还有一些其他配置参数，例如数据过期时间等等，可以康康文档，像storage这种字段可以配置在全局配置里，详见文档
         }).then(
@@ -40,7 +40,7 @@ export class MenuisOpenStore {
 
 export class CommendStore {
     num = 0
-    commendList:string[] | never = []
+    commendList: string[] | never = []
 
     constructor() {
         makeAutoObservable(this)

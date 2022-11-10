@@ -1,14 +1,39 @@
 import Favorite from "@mui/icons-material/Favorite"
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder"
 import MailIcon from "@mui/icons-material/Mail"
-import { Badge, Box, Button, ButtonGroup, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel,Grid, InputLabel,Menu,MenuItem, OutlinedInput, Paper, Radio, RadioGroup,Select, SelectChangeEvent, styled, TextField, Typography } from "@mui/material"
+import {
+    Badge,
+    Box,
+    Button,
+    ButtonGroup,
+    Checkbox,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    FormControl,
+    FormControlLabel,
+    Grid,
+    InputLabel,
+    Menu,
+    MenuItem,
+    OutlinedInput,
+    Paper,
+    Radio,
+    RadioGroup,
+    Select,
+    SelectChangeEvent,
+    styled,
+    TextField,
+    Typography,
+} from "@mui/material"
 import React, { useContext, useEffect, useState } from "react"
 
 import CardLayout from "../../components/cardLayout"
 import StoreContext from "../../store/index"
 interface newObj {
-    age?:number | null
-    salary?:number | string | null
+    age?: number | null
+    salary?: number | string | null
 }
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,20 +48,20 @@ const Div = styled("div")(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(1),
 }))
-const ageList = [20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]
+const ageList = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
 const salaryList = [
-    { value:0, label:"6000~8000"},
-    { value:1, label:"8000~10000"},
-    { value:2, label:"10000~12000"},
-    { value:3, label:"12000~14000"},
-    { value:4, label:"14000~16000"},
+    { value: 0, label: "6000~8000" },
+    { value: 1, label: "8000~10000" },
+    { value: 2, label: "10000~12000" },
+    { value: 3, label: "12000~14000" },
+    { value: 4, label: "14000~16000" },
 ]
 const label = { inputProps: { "aria-label": "Checkbox demo" } }
 const preData = {
-    age:20,
-    salary:2
+    age: 20,
+    salary: 2,
 }
-const settings = ["a","b"]
+const settings = ["a", "b"]
 export default function FormA(props: { list: string[] }) {
     const [btn1, setBtn1] = useState("")
     const [aa, setAa] = useState("")
@@ -47,21 +72,20 @@ export default function FormA(props: { list: string[] }) {
     const [favorCheck, setFavorCheck] = useState<boolean>(true)
     const [newSalary, setnewSalary] = useState<number | string>(preData.salary)
     const [obj, setObj] = useState<newObj>({
-        age:20,
-        salary:0
+        age: 20,
+        salary: 0,
     })
 
     const handleChange = (event: SelectChangeEvent<typeof age>) => {
         const name = event.target.name
         const value = event.target.value
-        if(name === "age"){
+        if (name === "age") {
             setAge(value)
-        } else if(name === "salary"){
+        } else if (name === "salary") {
             setSalary(value)
         }
-
     }
-    const handleFavorChange = (event:any) => {
+    const handleFavorChange = (event: any) => {
         setFavorCheck(!favorCheck)
     }
     const handleClickOpen = () => {
@@ -86,7 +110,7 @@ export default function FormA(props: { list: string[] }) {
     }
     useEffect(() => {
         // console.log(age)
-    },[age,salary])
+    }, [age, salary])
 
     // 添加评论区域
     const [currentCommend, setCurrentCommend] = React.useState<string>("Hello World")
@@ -94,10 +118,10 @@ export default function FormA(props: { list: string[] }) {
     const { CommendStore: store } = useContext(StoreContext)
     const [selectedCommend, setSelectedCommend] = React.useState<string>()
     const handleSend = () => {
-        console.log("发送"+currentCommend)
+        console.log("发送" + currentCommend)
         setCurrentCommend("")
         store.setNum(currentCommend)
-        setSelectedCommend(store.commendList[store.commendList.length-1])
+        setSelectedCommend(store.commendList[store.commendList.length - 1])
     }
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget)
@@ -110,8 +134,8 @@ export default function FormA(props: { list: string[] }) {
         setSelectedCommend(setting)
         setAnchorElUser(null)
     }
-    const inputCurrentCommend = (event:React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.value,"event.target.value")
+    const inputCurrentCommend = (event: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(event.target.value, "event.target.value")
 
         setCurrentCommend(event.target.value)
     }
@@ -172,45 +196,18 @@ export default function FormA(props: { list: string[] }) {
                     />
                 </Grid>
                 <Grid container>
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-form-control-label-placement"
-                        name="position"
-                        defaultValue="top"
-                    >
+                    <RadioGroup row aria-labelledby="demo-form-control-label-placement" name="position" defaultValue="top">
                         <Grid item xs={12} textAlign="center">
-                            <FormControlLabel
-                                value="top"
-                                disabled={!favorCheck}
-                                control={<Radio />}
-                                label="Top"
-                                labelPlacement="top"
-                            />
+                            <FormControlLabel value="top" disabled={!favorCheck} control={<Radio />} label="Top" labelPlacement="top" />
                         </Grid>
                         <Grid item xs={6} textAlign="right" pr={4}>
-                            <FormControlLabel
-                                value="start"
-                                disabled={!favorCheck}
-                                control={<Radio />}
-                                label="Start"
-                                labelPlacement="start"
-                            />
+                            <FormControlLabel value="start" disabled={!favorCheck} control={<Radio />} label="Start" labelPlacement="start" />
                         </Grid>
                         <Grid item xs={6} textAlign="left" pl={4}>
-                            <FormControlLabel
-                                value="end"
-                                disabled={!favorCheck}
-                                control={<Radio />}
-                                label="End" />
+                            <FormControlLabel value="end" disabled={!favorCheck} control={<Radio />} label="End" />
                         </Grid>
                         <Grid item xs={12} textAlign="center">
-                            <FormControlLabel
-                                value="bottom"
-                                disabled={!favorCheck}
-                                control={<Radio />}
-                                label="Bottom"
-                                labelPlacement="bottom"
-                            />
+                            <FormControlLabel value="bottom" disabled={!favorCheck} control={<Radio />} label="Bottom" labelPlacement="bottom" />
                         </Grid>
                     </RadioGroup>
                 </Grid>
@@ -218,15 +215,17 @@ export default function FormA(props: { list: string[] }) {
                     <Grid item xs={4}>
                         <Grid container>
                             <Grid item xs={4}>
-                                <Div>{"年龄"+newAge}</Div>
+                                <Div>{"年龄" + newAge}</Div>
                             </Grid>
                             <Grid item xs={4}>
-                                <Div>{"薪资"+salaryList.filter(el => el.value==newSalary)[0].label}</Div>
+                                <Div>{"薪资" + salaryList.filter((el) => el.value == newSalary)[0].label}</Div>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={8}>
-                        <Button onClick={handleClickOpen} variant="contained" color="success">选择</Button>
+                        <Button onClick={handleClickOpen} variant="contained" color="success">
+                            选择
+                        </Button>
                         <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
                             <DialogTitle>选择年龄与薪资</DialogTitle>
                             <DialogContent>
@@ -240,21 +239,20 @@ export default function FormA(props: { list: string[] }) {
                                             onChange={handleChange}
                                             input={<OutlinedInput label="Age" id="demo-dialog-native" />}
                                         >
-                                            {["",...ageList].map((item,index) => (
-                                                <option key={index} value={item}>{item}</option>
+                                            {["", ...ageList].map((item, index) => (
+                                                <option key={index} value={item}>
+                                                    {item}
+                                                </option>
                                             ))}
                                         </Select>
                                     </FormControl>
                                     <FormControl sx={{ m: 1, minWidth: 120 }}>
                                         <InputLabel id="demo-dialog-select-label">薪资</InputLabel>
-                                        <Select
-                                            name="salary"
-                                            value={salary}
-                                            onChange={handleChange}
-                                            input={<OutlinedInput label="salary" />}
-                                        >
-                                            {salaryList.map((item,index) => (
-                                                <MenuItem key={index} value={item.value}>{item.label}</MenuItem>
+                                        <Select name="salary" value={salary} onChange={handleChange} input={<OutlinedInput label="salary" />}>
+                                            {salaryList.map((item, index) => (
+                                                <MenuItem key={index} value={item.value}>
+                                                    {item.label}
+                                                </MenuItem>
                                             ))}
                                         </Select>
                                     </FormControl>
@@ -271,23 +269,19 @@ export default function FormA(props: { list: string[] }) {
                     <Grid item xs={4} display="flex" alignItems="center">
                         <Grid container p={3}>
                             <Grid item xs={8}>
-                                <TextField
-                                    required
-                                    value={currentCommend}
-                                    onChange={inputCurrentCommend}
-                                    id="outlined-required"
-                                    label="Required"
-                                />
+                                <TextField required value={currentCommend} onChange={inputCurrentCommend} id="outlined-required" label="Required" />
                             </Grid>
                             <Grid item xs={4} display="flex" alignItems="center">
-                                <Button variant="contained" disabled={currentCommend.length === 0} color="success" onClick={handleSend}>发送</Button>
+                                <Button variant="contained" disabled={currentCommend.length === 0} color="success" onClick={handleSend}>
+                                    发送
+                                </Button>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item xs={8} display="flex" alignItems="center">
                         <Grid container>
                             <Grid item xs={2} display="flex" alignItems="center">
-                                <Badge badgeContent={store.num} color="secondary"  onClick={handleOpenUserMenu}>
+                                <Badge badgeContent={store.num} color="secondary" onClick={handleOpenUserMenu}>
                                     <MailIcon color="action" />
                                 </Badge>
                             </Grid>

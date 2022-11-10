@@ -1,8 +1,8 @@
-import React, {useContext} from "react"
+import React, { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { PinkButton } from "../../assets/customStyle"
-import  StoreContext  from  "../../store/index"
+import StoreContext from "../../store/index"
 export default function Login() {
     const { MenuisOpenStore: store } = useContext(StoreContext)
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ export default function Login() {
     }
     return (
         <>
-            {JSON.stringify( store.authed)}
+            {JSON.stringify(store.authed)}
             <div>登录页</div>
             <div>
                 <PinkButton onClick={toReigster}>跳转注册页面</PinkButton>

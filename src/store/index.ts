@@ -1,6 +1,6 @@
 import { createContext } from "react"
 
-import { CommendStore,MenuisOpenStore } from "./Menuisopen"
+import { CommendStore, MenuisOpenStore } from "./Menuisopen"
 
 export const store = {
     MenuisOpenStore: new MenuisOpenStore(),

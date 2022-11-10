@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles"
 import { observer } from "mobx-react-lite"
 import React, { useContext, useState } from "react"
 import { useTranslation } from "react-i18next"
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import avatarImg from "../../assets/avatar.jpg"
 import StoreContext from "../../store/index"
@@ -42,15 +42,14 @@ function Index() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null)
     }
-    const handleClickListItem = (setting:string,event: React.MouseEvent<HTMLElement>, index: number) => {
+    const handleClickListItem = (setting: string, event: React.MouseEvent<HTMLElement>, index: number) => {
         console.log("获取当前点中的目标", event.currentTarget)
         console.log(index)
         handleCloseUserMenu()
-        if(setting==t("header.signout")){
+        if (setting == t("header.signout")) {
             store.setauthed(false)
             navigate("/Login")
         }
-
     }
     const { MenuisOpenStore: store } = useContext(StoreContext)
     const { t, i18n } = useTranslation()
@@ -112,7 +111,7 @@ function Index() {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting, index) => (
-                                    <MenuItem key={setting} onClick={(event) => handleClickListItem(setting,event, index)}>
+                                    <MenuItem key={setting} onClick={(event) => handleClickListItem(setting, event, index)}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
                                 ))}

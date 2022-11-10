@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box"
-import React, { forwardRef, LegacyRef ,memo} from "react"
+import React, { forwardRef, LegacyRef, memo } from "react"
 
 import { searchLayoutType } from "../../type"
 import createSlot from "../../utils/createSlot"
@@ -54,4 +54,4 @@ function Index<T extends LegacyRef<T>>(props: searchLayoutType, ref: React.Ref<u
         </div>
     )
 }
-export default  memo( forwardRef(Index))
+export default memo(forwardRef(Index))

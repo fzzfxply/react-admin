@@ -21,12 +21,7 @@ function RouterTest() {
     return (
         <Routes>
             {runderRouter(FIXEDROUTES)}
-            <Route
-                path="/*"
-                element={
-                    store.authed?<Home></Home>:<Navigate to="/Login" replace />
-                }
-            >
+            <Route path="/*" element={store.authed ? <Home></Home> : <Navigate to="/Login" replace />}>
                 {runderRouter(ROUTES)}
                 <Route index element={<Navigate to="Hotrecommended" />} />
             </Route>
