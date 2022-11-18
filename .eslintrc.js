@@ -18,6 +18,7 @@ module.exports = {
         "prettier",
     ],
     rules: {
+        '@typescript-eslint/no-non-null-assertion': 'off',
         "indent":                       ["error", 4, { SwitchCase: 1 }],
         "linebreak-style":              ["error", "unix"],
         "no-alert":                     ["error"],
