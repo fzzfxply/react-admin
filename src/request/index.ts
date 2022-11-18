@@ -6,17 +6,7 @@ import { useNavigate } from "react-router-dom"
  * 如果有多个请求都是 403 就需要这个开关 来控制message的展示个数
  * 展示一个之后  关闭阀门
  */
-const messageFlag = false
-/**
- * props是app.js页面传入的 this.props
- * 用于路由跳转  当403的时候 进行路由跳转
- */
-const props = ""
 
-/**
- * 当使用这个js的时候 会监听这个自定义事件
- * 改变props的值
- */
 // 第一步，创建实例
 const service = axios.create({
     baseURL: "api",
