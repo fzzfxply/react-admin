@@ -1,0 +1,11 @@
+.test {
+  &::before{
+
+    content: "";
+    display: block;
+    padding-top: 90px;
+    margin-top: -45px;
+  }
+
+}
+

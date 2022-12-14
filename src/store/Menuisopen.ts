@@ -27,7 +27,7 @@ export class MenuisOpenStore {
     setauthed = (value: boolean) => {
         this.authed = value
     }
-    setLngChange = (value: string) => {
+    setLngChange = (value: string):void => {
         this.isLngChange = value === "ch" ? "ja" : "ch"
         console.log(this.isLngChange)
     }

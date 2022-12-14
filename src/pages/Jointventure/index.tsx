@@ -57,4 +57,10 @@ function List() {
     )
 }
 
+function Index(){
+    return new Promise((r,j)=>{
+        r(111)
+    })
+
+}
 export default List
